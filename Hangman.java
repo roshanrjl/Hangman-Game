@@ -84,7 +84,8 @@ public class Hangman {
       e.printStackTrace();
     }
 
-       String word = words.get((int)(Math.random()*words.size()));
+       String word = words.get((int)(Math.random()*words.size())).toLowerCase();
+       System.out.println(word);
        Scanner scanner = new Scanner(System.in);
        ArrayList<Character> wordstate= new ArrayList<>();
        int wrongguess=0;
@@ -103,7 +104,9 @@ public class Hangman {
         System.out.println();
         System.out.println("Guess the letter in the word");
         char guess=   scanner.next().toLowerCase().charAt(0);
+
        if(word.indexOf(guess)>=0){
+        System.out.println("Correct guess");
         for(int i=0;i<word.length(); i++){
             if(word.charAt(i)==guess){
                 wordstate.set(i,guess);
@@ -117,7 +120,9 @@ public class Hangman {
 
        }
        else{
+        int chance=6;
            wrongguess++;
+           System.out.println("Wrong guess, you have "+(chance-wrongguess)+" chance left");
        }
 
 
